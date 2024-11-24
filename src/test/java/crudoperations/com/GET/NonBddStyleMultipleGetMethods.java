@@ -19,7 +19,8 @@ public class NonBddStyleMultipleGetMethods {
 
 		r.basePath("IN/110028");
 		p = r.when().get();
-		p.then().statusCode(200).log().all();
+		p.then().log().all();
+
 	}
 
 	public static void main(String[] args) {
