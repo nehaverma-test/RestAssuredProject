@@ -3,6 +3,7 @@ package crudoperations.com.POST;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 
 public class NonBddStylePutRequest {
@@ -19,8 +20,13 @@ public class NonBddStylePutRequest {
 		r.basePath("auth");
 		r.contentType(ContentType.JSON);
 		r.body(payloadData);
-		Response s = r.when().post();
-		s.then().statusCode(200).log().all();
+		Response response = r.when().post();
+		
+		//Validation part
+		
+		ValidatableResponse vd =response.then();
+		vd.statusCode(200);
+		
 
 	}
 
